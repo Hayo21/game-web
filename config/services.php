@@ -14,6 +14,11 @@ return [
     |
     */
 
+    // api rawg
+    'rawg' => [
+        'key' => env('API_RAWG'),
+    ],
+
     'postmark' => [
         'key' => env('POSTMARK_API_KEY'),
     ],
