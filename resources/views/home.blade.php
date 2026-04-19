@@ -50,21 +50,33 @@
                 <img src="{{ $games[0]['background_image'] }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption ">
                     <h5>{{ $games[0]['name'] }}</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
+                    <h5>
+                        @foreach ($games[0]['stores'] ?? [] as $store)
+                            <x-store-icon :store="$store" />
+                        @endforeach
+                    </h5>
                 </div>
             </div>
             <div class="carousel-item" data-bs-interval="2000">
                 <img src="{{ $games[1]['background_image'] }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption ">
                     <h5>{{ $games[1]['name'] }}</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
+                    <h5>
+                        @foreach ($games[1]['stores'] ?? [] as $store)
+                            <x-store-icon :store="$store" />
+                        @endforeach
+                    </h5>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{ $games[2]['background_image'] }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption  ">
                     <h5>{{ $games[2]['name'] }}</h5>
-                    <p>ini bakal jadi store linknya</p>
+                    <h5>
+                        @foreach ($games[2]['stores'] ?? [] as $store)
+                            <x-store-icon :store="$store" />
+                        @endforeach
+                    </h5>
                 </div>
             </div>
         </div>
@@ -81,11 +93,11 @@
 
     {{-- card game --}}
     <div class="p-3" id="badan">
-        <h1> Games </h1>
-        <div class="row">
+        <h1> All Games </h1>
+        <div class="row justify-content-center">
 
             @foreach ($games as $game)
-                @if ($loop->index == 12)
+                @if ($loop->index == 13)
                     @break
                 @endif
                 <x-game-card :game="$game" />

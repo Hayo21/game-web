@@ -13,28 +13,13 @@
             <ul class="social-icons d-flex justify-content-center">
                 <li style="--i:1">
                     @forelse ($game['stores'] ?? [] as $store)
-                        @switch($store['store']['slug'])
-                            @case('steam')
-                                <span style="color:rgb(33, 33, 159)" class="fab fa-steam"></span>
-                            @break
-
-                            @case('playstation-store')
-                                <span style="color:black" class="fab fa-playstation"></span>
-                            @break
-
-                            @case('xbox-store')
-                                <span style="color:green" class="fab fa-x-box"></span>
-                            @break
-
-                            @default
-                                <span>{{ $store['store']['name'] }}</span>
-                        @endswitch
-                        @empty
-                            <span>No Stores Available.</span>
-                        @endforelse
-                    </li>
-                </ul>
-            </div>
+                        <x-store-icon :store="$store" />
+                    @empty
+                        <span>No Yet Available.</span>
+                    @endforelse
+                </li>
+            </ul>
         </div>
-        <h5 class="fs-5 mt-2 text-center">{{ $game['name'] ?? 'No Title' }}</h5>
     </div>
+    <h5 class="fs-5 mt-2 text-center">{{ $game['name'] ?? 'No Title' }}</h5>
+</div>

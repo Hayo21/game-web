@@ -11,8 +11,8 @@ class GameController extends Controller
         $apiKey = env('API_RAWG');
         $response = Http::get("https://api.rawg.io/api/games", [
             "key" => $apiKey,
-            "page_size" => 10,
-            "dates" => "2025-12-01,2026-12-31",
+            "page_size" => 15,
+            "dates" => "2025-01-01,2050-12-31",
         ]);
 
         $data = $response->json();
