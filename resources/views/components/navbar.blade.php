@@ -112,14 +112,14 @@
     }
 </style>
 
-<div class="navbar-wrapper fixed-top">
+<div class="navbar-wrapper fixed-top d-flex justify-content-center">
     <nav class="navbar navbar-expand-lg navbar-glass">
-        <div class="container-fluid p-0">
+        <div class="container-fluid p-0 ">
             <a class="navbar-brand" href="#">Games</a>
 
-            <form class="d-flex gap-2" role="search">
+            <form class="d-flex gap-2 me-3" role="search">
                 <input class="form-control" type="search" placeholder="Search games..." aria-label="Search">
-                <button class="btn btn-search" type="submit">🔍</button>
+                <button class="btn btn-search " type="submit">🔍</button>
             </form>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
@@ -128,7 +128,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class=" navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Home</a>
                     </li>

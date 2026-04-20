@@ -18,6 +18,7 @@
             .carousel-item img {
                 height: 500px;
                 object-fit: cover;
+                
             }
         }
 
@@ -93,7 +94,7 @@
 
     {{-- card game --}}
     <div class="p-3" id="badan">
-        <h1> All Games </h1>
+        <h1> All    Games </h1>
         <div class="row justify-content-center">
 
             @foreach ($games as $game)
