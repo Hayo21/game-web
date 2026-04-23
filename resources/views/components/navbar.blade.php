@@ -130,13 +130,15 @@
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class=" navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                            href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link {{ request()->routeIs('genres.index') ? 'active' : '' }}"
+                            href="{{ route('genres.index') }}">Genres</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Genres</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link">About</a>
                     </li>
                 </ul>
             </div>
