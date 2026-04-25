@@ -10,209 +10,19 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap"
         rel="stylesheet">
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: #3747d1;
-            color: white;
-            font-family: 'Outfit', sans-serif;
-            min-height: 100vh;
-        }
-
-        /* ── HERO ── */
-        .game-hero {
-            position: relative;
-            width: 100%;
-            max-height: 480px;
-            overflow: hidden;
-        }
-
-        .game-hero img {
-            width: 100%;
-            height: 100%;
-            max-height: 480px;
-            object-fit: cover;
-            object-position: center top;
-            display: block;
-            filter: brightness(0.6);
-        }
-
-        .game-hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, #3747d1 0%, rgba(55, 71, 209, 0.3) 50%, transparent 100%);
-        }
-
-        .game-hero-title {
-            position: absolute;
-            bottom: 1.5rem;
-            left: 1.5rem;
-            right: 1.5rem;
-        }
-
-        .game-hero-title h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2rem, 7vw, 3.8rem);
-            letter-spacing: 3px;
-            line-height: 1;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        /* ── CONTENT ── */
-        .game-content {
-            max-width: 820px;
-            margin: 0 auto;
-            padding: 2rem 1.25rem 5rem;
-        }
-
-        /* back button */
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.55);
-            text-decoration: none;
-            margin-bottom: 2rem;
-            transition: color 0.2s;
-        }
-
-        .btn-back:hover {
-            color: white;
-        }
-
-        /* section block */
-        .info-block {
-            margin-bottom: 2rem;
-        }
-
-        .info-block-label {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 0.78rem;
-            letter-spacing: 3px;
-            opacity: 0.45;
-            text-transform: uppercase;
-            margin-bottom: 0.6rem;
-        }
-
-        /* description */
-        .description-text {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            font-weight: 300;
-            opacity: 0.85;
-        }
-
-        /* genre pills */
-        .genre-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .genre-pill {
-            padding: 5px 14px;
-            border-radius: 999px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(4px);
-            transition: background 0.2s;
-        }
-
-        .genre-pill:hover {
-            background: rgba(255, 255, 255, 0.22);
-        }
-
-        /* store cards */
-        .store-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .store-card {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            text-decoration: none;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .store-card:hover {
-            background: rgba(255, 255, 255, 0.18);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .store-card i {
-            opacity: 0.6;
-            font-size: 0.8rem;
-        }
-
-        /* divider */
-        .soft-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-bottom: 2rem;
-        }
-
-        /* no image placeholder */
-        .hero-placeholder {
-            height: 220px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.3;
-            font-size: 3rem;
-        }
-
-        @media (max-width: 576px) {
-            .game-hero {
-                max-height: 300px;
-            }
-
-            .game-hero img {
-                max-height: 300px;
-            }
-
-            .game-content {
-                padding: 1.5rem 1rem 4rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('gameShow.css') }}">
 </head>
 
 <body>
 
     <!-- Navbar -->
     <x-navbar />
-    <!-- end Navbar -->
 
     <!-- Hero Image -->
     @if (!empty($game['background_image']))
         <div class="game-hero">
-            <img src="{{ $game['background_image'] }}" alt="{{ $game['name'] }}">
-            <div class="game-hero-overlay"></div>
+            <img src="{{ $game['background_image'] }}" alt="{{ $game['name'] }} ">
+            <div class="game-hero-overlay "></div>
             <div class="game-hero-title">
                 <h1>{{ $game['name'] }}</h1>
             </div>
@@ -220,11 +30,6 @@
     @else
         <div class="hero-placeholder">
             <i class="fa-solid fa-gamepad"></i>
-        </div>
-        <div class="game-content">
-            <h1 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:3px;margin-bottom:1.5rem;">
-                {{ $game['name'] }}
-            </h1>
         </div>
     @endif
 
@@ -241,6 +46,60 @@
             <div class="info-block">
                 <div class="info-block-label">Description</div>
                 <p class="description-text">{{ $game['description_raw'] }}</p>
+            </div>
+            <div class="soft-divider"></div>
+        @endif
+
+        <!-- Trailer / Videos -->
+        @if (!empty($movies['results']) && count($movies['results']) > 0)
+            <div class="info-block">
+                <div class="info-block-label">Trailer</div>
+
+                @foreach ($movies['results'] as $index => $movie)
+                    @php
+                        $videoUrl = $movie['data']['max'] ?? ($movie['data']['480'] ?? null);
+                        $thumb = $movie['preview'] ?? ($game['background_image'] ?? '');
+                    @endphp
+
+                    @if ($videoUrl)
+                        <div style="{{ $index > 0 ? 'margin-top:12px;' : '' }}">
+                            {{-- Thumbnail view --}}
+                            <div class="trailer-wrap" id="thumb-{{ $index }}"
+                                onclick="playTrailer({{ $index }}, '{{ $videoUrl }}')">
+                                <img src="{{ $thumb }}" alt="{{ $movie['name'] }}" class="trailer-thumb">
+                                <div class="trailer-play-btn">
+                                    <span><i class="fa-solid fa-play"></i></span>
+                                </div>
+                                <div class="trailer-title-tag">{{ $movie['name'] }}</div>
+                            </div>
+
+                            {{-- Video player (hidden until clicked) --}}
+                            <div class="trailer-video" id="video-{{ $index }}">
+                                <video controls>
+                                    <source src="{{ $videoUrl }}" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+            <div class="soft-divider"></div>
+        @endif
+
+        <!-- Screenshots -->
+        @if (!empty($screenshots['results']) && count($screenshots['results']) > 0)
+            <div class="info-block">
+                <div class="info-block-label">Screenshots</div>
+                <div class="screenshots-grid" id="screenshotsGrid">
+                    @foreach ($screenshots['results'] as $i => $shot)
+                        <div class="screenshot-item" onclick="openLightbox({{ $i }})">
+                            <img src="{{ $shot['image'] }}" alt="Screenshot {{ $i + 1 }}" loading="lazy">
+                            <div class="screenshot-zoom-icon">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
             <div class="soft-divider"></div>
         @endif
@@ -276,11 +135,79 @@
 
     </div>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+        <div class="lightbox-inner">
+            <button class="lightbox-close" onclick="closeLightbox()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <button class="lightbox-nav prev" onclick="prevShot()">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <img src="" id="lightboxImg" alt="Screenshot">
+            <button class="lightbox-nav next" onclick="nextShot()">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
+    </script>
+
+    <script>
+        // ── TRAILER ──
+        function playTrailer(index, videoUrl) {
+            const thumb = document.getElementById('thumb-' + index);
+            const videoWrap = document.getElementById('video-' + index);
+            const video = videoWrap.querySelector('video');
+
+            thumb.style.display = 'none';
+            videoWrap.style.display = 'block';
+            video.play();
+        }
+
+        // ── LIGHTBOX ──
+        const screenshots = @json(collect($screenshots['results'] ?? [])->pluck('image')->values());
+        let currentShot = 0;
+
+        function openLightbox(index) {
+            currentShot = index;
+            document.getElementById('lightboxImg').src = screenshots[index];
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeLightboxOnBg(e) {
+            if (e.target === document.getElementById('lightbox')) closeLightbox();
+        }
+
+        function prevShot() {
+            currentShot = (currentShot - 1 + screenshots.length) % screenshots.length;
+            document.getElementById('lightboxImg').src = screenshots[currentShot];
+        }
+
+        function nextShot() {
+            currentShot = (currentShot + 1) % screenshots.length;
+            document.getElementById('lightboxImg').src = screenshots[currentShot];
+        }
+
+        // keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const lb = document.getElementById('lightbox');
+            if (!lb.classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') prevShot();
+            if (e.key === 'ArrowRight') nextShot();
+            if (e.key === 'Escape') closeLightbox();
+        });
     </script>
 </body>
 
