@@ -305,6 +305,7 @@
 
                 {{-- Rank 3 (kiri) --}}
                 <div class="podium-card rank-3">
+
                     <span class="podium-rank-badge">#3</span>
                     @if ($genres[2]['image_background'])
                         <img src="{{ $genres[2]['image_background'] }}" alt="{{ $genres[2]['name'] }}">
@@ -312,6 +313,7 @@
                     <h5>{{ $genres[2]['name'] }}</h5>
                     <div class="game-count">{{ number_format($genres[2]['games_count']) }} games</div>
                     <div class="podium-base"></div>
+
                 </div>
 
                 {{-- Rank 1 (tengah) --}}
@@ -350,18 +352,20 @@
     <div class="genre-grid">
         @foreach ($genres as $index => $genre)
             @if ($index >= 3)
-                <div class="genre-card">
-                    @if ($genre['image_background'])
-                        <img src="{{ $genre['image_background'] }}" alt="{{ $genre['name'] }}" loading="lazy">
-                    @else
-                        <div style="width:100%;height:100%;background:#2a38b8;"></div>
-                    @endif
-                    <div class="genre-card-overlay">
-                        <h6>{{ $genre['name'] }}</h6>
-                        <small>{{ number_format($genre['games_count']) }} games</small>
+                <a href="{{ route('genres.show', $genre['id']) }}" style="text-decoration: none; color: inherit;">
+                    <div class="genre-card">
+                        @if ($genre['image_background'])
+                            <img src="{{ $genre['image_background'] }}" alt="{{ $genre['name'] }}" loading="lazy">
+                        @else
+                            <div style="width:100%;height:100%;background:#2a38b8;"></div>
+                        @endif
+                        <div class="genre-card-overlay">
+                            <h6>{{ $genre['name'] }}</h6>
+                            <small>{{ number_format($genre['games_count']) }} games</small>
+                        </div>
+                        <div class="genre-rank-tag">#{{ $index + 1 }}</div>
                     </div>
-                    <div class="genre-rank-tag">#{{ $index + 1 }}</div>
-                </div>
+                </a>
             @endif
         @endforeach
     </div>
