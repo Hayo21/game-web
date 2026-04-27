@@ -16,7 +16,7 @@
     @break
 
     @case('xbox-store')
-        <span style="color:#107c10" class="fab fa-xbox"></span> {{-- ← fa-xbox bukan fa-x-box --}}
+        <span style="color:#107c10" class="fab fa-xbox"></span>
     @break
 
     @case('xbox360')

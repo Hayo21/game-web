@@ -57,9 +57,10 @@
         border: 1px solid rgba(0, 0, 0, 0.15);
         color: #1a1a2e;
         border-radius: 20px;
-        padding: 0.3rem 1rem;
+        padding: 0.3rem 0.75rem;
         font-size: 0.85rem;
         transition: background 0.25s ease;
+        white-space: nowrap;
     }
 
     .navbar-glass .btn-search:hover {
@@ -74,6 +75,9 @@
         border-radius: 20px;
         font-size: 0.85rem;
         padding: 0.3rem 0.85rem;
+        /* di mobile lebih kecil biar muat */
+        min-width: 0;
+        width: 100%;
     }
 
     .navbar-glass .form-control::placeholder {
@@ -87,7 +91,31 @@
         color: #333;
     }
 
-    /* Responsive wrapper margins */
+    /* search form selalu inline */
+    .navbar-search-form {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        flex: 1;
+        max-width: 260px;
+        min-width: 0;
+    }
+
+    /* di desktop collapse inline, no extra bg */
+    @media (min-width: 992px) {
+        .navbar-glass .navbar-collapse {
+            background: transparent;
+            backdrop-filter: none;
+            margin-top: 0;
+            padding: 0;
+            border-radius: 0;
+        }
+
+        .navbar-search-form {
+            max-width: 220px;
+        }
+    }
+
     .navbar-wrapper {
         padding: 1rem 2rem 0;
     }
@@ -102,10 +130,6 @@
             padding: 0.35rem 0.85rem;
         }
 
-        .navbar-glass .navbar-collapse {
-            padding: 0.5rem 0;
-        }
-
         .navbar-glass .nav-link {
             padding: 0.5rem 0.85rem;
         }
@@ -113,27 +137,33 @@
 </style>
 
 <div class="navbar-wrapper fixed-top d-flex justify-content-center">
-    <nav class="navbar navbar-expand-lg navbar-glass">
-        <div class="container-fluid p-0 ">
-            <a class="navbar-brand" href="#">Games</a>
+    <nav class="navbar navbar-expand-lg navbar-glass w-100">
+        <div class="container-fluid p-0 gap-2">
 
-            <form class="d-flex gap-2 me-3" role="search">
-                <input class="form-control" type="search" placeholder="Search games..." aria-label="Search">
-                <button class="btn btn-search " type="submit">🔍</button>
+            {{-- Brand --}}
+            <a class="navbar-brand flex-shrink-0" href="#">Games</a>
+
+            {{-- Search: selalu tampil, sejajar brand dan toggler --}}
+            <form class="navbar-search-form" role="search">
+                <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
+                <button class="btn btn-search flex-shrink-0" type="submit">🔍</button>
             </form>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-                aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            {{-- Toggler di paling kanan saat mobile --}}
+            <button class="navbar-toggler flex-shrink-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            {{-- Nav links: collapse di mobile, inline di desktop --}}
             <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class=" navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+                <ul class="navbar-nav ms-auto mb-0 gap-1">
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
                             href="{{ route('home') }}">Home</a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('genres.index') ? 'active' : '' }}"
                             href="{{ route('genres.index') }}">Genres</a>
                     </li>
@@ -142,6 +172,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </nav>
 </div>

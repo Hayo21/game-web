@@ -94,6 +94,7 @@
             padding-top: 1.8rem;
             padding-bottom: 1.8rem;
             box-shadow: 0 16px 48px rgba(255, 200, 0, 0.35);
+
         }
 
         /* rank 2 — right */
@@ -102,6 +103,8 @@
             background: linear-gradient(145deg, #e8e8e8 0%, #b0b0b0 100%);
             color: #1a1a1a;
             box-shadow: 0 10px 32px rgba(0, 0, 0, 0.25);
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }
 
         /* rank 3 — left */
@@ -110,6 +113,8 @@
             background: linear-gradient(145deg, #e8a96a 0%, #b5713a 100%);
             color: #1a0d00;
             box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
 
         .podium-rank-badge {
@@ -124,8 +129,8 @@
         }
 
         .podium-card img {
-            width: 72px;
-            height: 72px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 0.75rem;
@@ -272,8 +277,8 @@
             }
 
             .podium-card img {
-                width: 52px;
-                height: 52px;
+                width: 75px;
+                height: 75px;
             }
 
             .genre-grid {
@@ -304,43 +309,48 @@
             <div class="podium-row">
 
                 {{-- Rank 3 (kiri) --}}
-                <div class="podium-card rank-3">
+                <a href="{{ route('genres.show', $genres[2]['id']) }}" style="text-decoration: none; color: inherit;">
+                    <div class="podium-card rank-3">
+                        <span class="podium-rank-badge">#3</span>
+                        @if ($genres[2]['image_background'])
+                            <img src="{{ $genres[2]['image_background'] }}" alt="{{ $genres[2]['name'] }}">
+                        @endif
+                        <h5>{{ $genres[2]['name'] }}</h5>
+                        <div class="game-count">{{ number_format($genres[2]['games_count']) }} games</div>
+                        <div class="podium-base"></div>
+                    </div>
+                </a>
 
-                    <span class="podium-rank-badge">#3</span>
-                    @if ($genres[2]['image_background'])
-                        <img src="{{ $genres[2]['image_background'] }}" alt="{{ $genres[2]['name'] }}">
-                    @endif
-                    <h5>{{ $genres[2]['name'] }}</h5>
-                    <div class="game-count">{{ number_format($genres[2]['games_count']) }} games</div>
-                    <div class="podium-base"></div>
-
-                </div>
 
                 {{-- Rank 1 (tengah) --}}
-                <div class="podium-card rank-1">
-                    <span class="podium-rank-badge">#1</span>
-                    <span class="podium-crown">👑</span>
-                    @if ($genres[0]['image_background'])
-                        <img src="{{ $genres[0]['image_background'] }}" alt="{{ $genres[0]['name'] }}">
-                    @endif
-                    <h5>{{ $genres[0]['name'] }}</h5>
-                    <div class="game-count">{{ number_format($genres[0]['games_count']) }} games</div>
-                    <div class="podium-base"></div>
-                </div>
+                <a href="{{ route('genres.show', $genres[0]['id']) }}" style="text-decoration: none; color: inherit;">
+                    <div class="podium-card rank-1">
+                        <span class="podium-rank-badge">#1</span>
+                        <span class="podium-crown">👑</span>
+                        @if ($genres[0]['image_background'])
+                            <img src="{{ $genres[0]['image_background'] }}" alt="{{ $genres[0]['name'] }}">
+                        @endif
+                        <h5>{{ $genres[0]['name'] }}</h5>
+                        <div class="game-count">{{ number_format($genres[0]['games_count']) }} games</div>
+                        <div class="podium-base"></div>
+                    </div>
+                </a>
 
                 {{-- Rank 2 (kanan) --}}
-                <div class="podium-card rank-2">
-                    <span class="podium-rank-badge">#2</span>
-                    @if ($genres[1]['image_background'])
-                        <img src="{{ $genres[1]['image_background'] }}" alt="{{ $genres[1]['name'] }}">
-                    @endif
-                    <h5>{{ $genres[1]['name'] }}</h5>
-                    <div class="game-count">{{ number_format($genres[1]['games_count']) }} games</div>
-                    <div class="podium-base"></div>
-                </div>
-
+                <a href="{{ route('genres.show', $genres[1]['id']) }}" style="text-decoration: none; color: inherit;">
+                    <div class="podium-card rank-2">
+                        <span class="podium-rank-badge">#2</span>
+                        @if ($genres[1]['image_background'])
+                            <img src="{{ $genres[1]['image_background'] }}" alt="{{ $genres[1]['name'] }}">
+                        @endif
+                        <h5>{{ $genres[1]['name'] }}</h5>
+                        <div class="game-count">{{ number_format($genres[1]['games_count']) }} games</div>
+                        <div class="podium-base"></div>
+                    </div>
+                </a>
             </div>
-        @endif
+    </div>
+    @endif
     </div>
 
     <!-- Divider -->

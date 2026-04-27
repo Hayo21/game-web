@@ -45,7 +45,7 @@
         @if (!empty($game['description_raw']))
             <div class="info-block">
                 <div class="info-block-label">Description</div>
-                <p class="description-text">{{ $game['description_raw'] }}</p>
+                <p class="description-text" style="text-align:justify">{{ $game['description_raw'] }}</p>
             </div>
             <div class="soft-divider"></div>
         @endif
