@@ -107,6 +107,13 @@
     </div>
     {{-- end card game --}}
 
+    {{-- about --}}
+    <div class="p-3 text-white" id="about" style="background-color: #3747d1; text-align: justify;">
+        <h1>About this website</h1>
+        <p>Welcome to this website! We are dedicated to showing you about the game either the screenshoot or the trailer
+            of the game. This website is using API from RAWG and built with Laravel in 2026®</p>
+    </div>
+    {{-- end about --}}
 
     {{-- scripts --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
